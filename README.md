@@ -1,42 +1,62 @@
- Sistema de Gestión de Rutas
+Sistema de Gestión de Proyectos
 
-API REST desarrollada con FastAPI y SQLModel para la administración de empleados, proyectos y asignaciones dentro de una empresa de transporte.
+API REST desarrollada con FastAPI y SQLModel para la gestión integral de empleados, proyectos y asignaciones dentro de una empresa consultora.
+El sistema permite registrar empleados, crear proyectos, asignar roles y mantener un control eficiente de los recursos humanos y técnicos.
 
-El sistema permite registrar empleados, crear proyectos, asignar tareas y aplicar validaciones automáticas de datos con Pydantic, además de mantener relaciones entre entidades y ofrecer documentación interactiva.
+Descripción
 
- Descripción del Proyecto
+Una empresa consultora necesita gestionar sus proyectos y empleados.
+Este sistema fue diseñado para ofrecer una solución ágil que permita:
 
-El proyecto Gestión de Rutas tiene como objetivo construir una API REST que gestione la información de empleados y proyectos de forma eficiente, aplicando buenas prácticas de arquitectura, validaciones y relaciones entre tablas con SQLModel.
+Registrar empleados (nombre, especialidad, salario, estado).
 
- Funcionalidades Principales
+Registrar proyectos (nombre, descripción, presupuesto, estado).
 
- CRUD completo de empleados
+Asignar empleados a proyectos (relación N:M).
 
- CRUD completo de proyectos
+Definir un gerente responsable por cada proyecto (relación 1:N).
 
- Relación N:M entre empleados y proyectos
+Consultar los proyectos de un empleado y los empleados de un proyecto.
 
-Validaciones de datos mediante Pydantic
+Aplicar reglas de negocio automáticas que mantienen la integridad del sistema.
 
- Reglas de negocio integradas:
+Características Principales
 
-No se puede eliminar un gerente activo.
+CRUD completo de Empleados, Proyectos y Asignaciones.
 
-No se pueden crear proyectos duplicados.
+Relación 1:N → Un gerente puede dirigir varios proyectos.
+
+Relación N:M → Un empleado puede trabajar en muchos proyectos.
+
+Validaciones automáticas con Pydantic.
+
+Lógica de negocio integrada:
+
+No se puede eliminar un gerente activo con proyectos asignados.
+
+No se pueden crear proyectos duplicados (nombre único).
 
 Un empleado no puede ser asignado dos veces al mismo proyecto.
 
- Filtros en endpoints GET (por nombre o ID)
+Filtros personalizados en endpoints (por nombre, estado o especialidad).
 
-Documentación automática con Swagger (/docs)
+Documentación automática con Swagger UI (/docs).
 
- Tecnologías Utilizadas
+Lógica de Negocio
+
+Un empleado gerente no puede eliminarse si tiene proyectos asignados.
+
+Los proyectos no pueden tener nombres repetidos.
+
+Un empleado no puede estar asignado dos veces al mismo proyecto.
+
+Tecnologías Utilizadas
 
 Python 3.12+
 
 FastAPI
 
-SQLModel
+SQLModel / SQLAlchemy
 
 SQLite
 
@@ -44,122 +64,116 @@ Uvicorn
 
 Pydantic
 
- Instalación y Ejecución
-1️ Clonar el repositorio
-git clone https://github.com/danieljdmurcia/PROYECTO_GESTION_RUTAS-3.git
-cd PROYECTO_GESTION_RUTAS-3
+Instalación y Ejecución
+1. Clonar el repositorio
+git clone https://github.com/danieljdmurcia/PROYECTO_GESTION_RUTAS.git
+cd PROYECTO_GESTION_RUTAS
 
-2️ Crear y activar el entorno virtual
+3. Crear y activar entorno virtual
 
-Windows
+En Windows:
 
 python -m venv venv
 venv\Scripts\activate
 
 
-Linux / macOS
+En Linux / macOS:
 
 python3 -m venv venv
 source venv/bin/activate
 
-3️ Instalar dependencias
+3. Instalar dependencias
 pip install -r requirements.txt
 
-4️ Ejecutar el servidor
+4. Ejecutar el servidor
 uvicorn app.main:app --reload
 
-5️ Acceder a la documentación
+5. Acceder a la documentación
 
-Swagger UI: http://127.0.0.1:8000/docs
+Swagger UI → http://127.0.0.1:8000/docs
 
-Redoc: http://127.0.0.1:8000/redoc
+Redoc → http://127.0.0.1:8000/redoc
 
- Estructura del Proyecto
+Estructura del Proyecto
 PROYECTO_GESTION_RUTAS/
 │
 ├── app/
-│   ├── main.py               # Punto de entrada del servidor
-│   ├── database.py           # Conexión y sesión con la base de datos
-│   ├── models.py             # Modelos SQLModel (Empleado, Proyecto, Asignación)
-│   ├── schemas.py            # Esquemas Pydantic para validaciones
-│   ├── crud.py               # Lógica CRUD y reglas de negocio
+│   ├── main.py                # Punto de entrada de la aplicación
+│   ├── database.py            # Conexión y creación de tablas
+│   ├── models.py              # Modelos SQLModel (Empleado, Proyecto, Asignación)
+│   ├── schemas.py             # Esquemas Pydantic
+│   ├── crud.py                # Funciones CRUD y reglas de negocio
 │   ├── routers/
-│   │   ├── empleados.py      # Endpoints de empleados
-│   │   ├── proyectos.py      # Endpoints de proyectos
-│   │   └── asignaciones.py   # Endpoints de asignaciones
+│   │   ├── empleados.py       # Endpoints de empleados
+│   │   ├── proyectos.py       # Endpoints de proyectos
+│   │   └── asignaciones.py    # Endpoints de asignaciones
 │   └── __init__.py
 │
-├── requirements.txt          # Dependencias del proyecto
-├── .gitignore                # Archivos y carpetas a ignorar en Git
-└── README.md                 # Documentación del proyecto
+├── requirements.txt           # Dependencias del proyecto
+├── README.md                  # Documentación
+└── venv/                      # Entorno virtual (opcional)
 
- Mapa de Endpoints
- Empleados
+Mapa de Endpoints
+Empleados
 Método	Endpoint	Descripción
-POST	/empleados/	Crear empleado
-GET	/empleados/	Listar empleados (filtro: ?q=nombre)
-GET	/empleados/{id}	Obtener empleado por ID
-PUT	/empleados/{id}	Actualizar empleado
-DELETE	/empleados/{id}	Eliminar empleado
- Proyectos
+POST	/empleados/	Crear un nuevo empleado
+GET	/empleados/	Listar empleados (filtros: nombre, especialidad, estado)
+GET	/empleados/{id}	Obtener información de un empleado
+PUT	/empleados/{id}	Actualizar información de un empleado
+DELETE	/empleados/{id}	Eliminar un empleado (si no es gerente activo)
+Proyectos
 Método	Endpoint	Descripción
-POST	/proyectos/	Crear proyecto
-GET	/proyectos/	Listar proyectos (filtro: ?q=nombre)
-GET	/proyectos/{id}	Obtener proyecto por ID
-PUT	/proyectos/{id}	Actualizar proyecto
-DELETE	/proyectos/{id}	Eliminar proyecto
-🔗 Asignaciones
+POST	/proyectos/	Crear un nuevo proyecto
+GET	/proyectos/	Listar proyectos (filtros: nombre, estado, presupuesto)
+GET	/proyectos/{id}	Obtener información de un proyecto
+PUT	/proyectos/{id}	Actualizar datos de un proyecto
+DELETE	/proyectos/{id}	Eliminar un proyecto (validando dependencias)
+Asignaciones
 Método	Endpoint	Descripción
-POST	/asignaciones/	Crear asignación (valida duplicados)
-GET	/asignaciones/	Listar asignaciones (filtros: empleado_id, proyecto_id)
-GET	/asignaciones/{id}	Obtener asignación por ID
-DELETE	/asignaciones/{id}	Eliminar asignación
-🧾 Ejemplos de Cuerpos JSON
+POST	/asignaciones/	Asignar un empleado a un proyecto
+GET	/asignaciones/	Listar todas las asignaciones (filtros: empleado, proyecto)
+GET	/asignaciones/{id}	Consultar una asignación
+DELETE	/asignaciones/{id}	Eliminar una asignación
+Ejemplos de Cuerpos JSON
 Crear Empleado
 {
-  "nombre": "Juan Pérez",
-  "cargo": "Conductor",
+  "nombre": "Laura Gómez",
+  "especialidad": "Backend",
+  "salario": 3500000,
   "estado": "Activo"
 }
 
 Crear Proyecto
 {
-  "nombre": "Ruta Norte",
-  "descripcion": "Proyecto para la gestión de rutas del norte",
-  "fecha_inicio": "2025-11-01",
-  "fecha_fin": "2026-02-15",
-  "gerente_id": 1
+  "nombre": "Sistema de Control Vehicular",
+  "descripcion": "Proyecto para monitorear rutas y conductores",
+  "presupuesto": 12000000,
+  "estado": "Activo",
+  "id_gerente": 1
 }
 
 Crear Asignación
 {
-  "empleado_id": 2,
-  "proyecto_id": 1,
-  "rol": "Coordinador de ruta"
+  "id_proyecto": 1,
+  "id_empleado": 3,
+  "rol": "Desarrollador",
+  "fecha_asignacion": "2025-10-30"
 }
 
- Reglas de Negocio y Validaciones
+Estado del Proyecto
 
- No se puede eliminar un gerente activo.
+CRUD completo y funcional
 
- No se pueden crear proyectos duplicados.
+Reglas de negocio operativas
 
- Un empleado no puede ser asignado dos veces al mismo proyecto.
+Validaciones de datos activas
 
- Filtros disponibles en endpoints GET para buscar por nombre o ID.
+Documentación automática lista
 
- Validaciones automáticas de datos con Pydantic.
-
- Notas
-
-Documentación Swagger disponible en /docs
-
-Variable de entorno por defecto:
-
-DATABASE_URL=sqlite:///./db.sqlite3
+Base de datos SQLite en funcionamiento
 
 Autor
 
 Daniel Murcia
-Proyecto académico: Sistema de Gestión de Rutas con FastAPI y SQLModel
-📦 Repositorio GitHub: https://github.com/danieljdmurcia/PROYECTO_GESTION_RUTAS-3
+Proyecto académico desarrollado para la asignatura Desarrollo de Software
+Repositorio GitHub: PROYECTO_GESTION_RUTAS
