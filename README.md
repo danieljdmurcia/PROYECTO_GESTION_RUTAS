@@ -122,7 +122,7 @@ GET	/empleados/{id}	Obtener información de un empleado
 PUT	/empleados/{id}	Actualizar información de un empleado
 DELETE	/empleados/{id}	Eliminar un empleado (si no es gerente activo)
 Proyectos
-Método	Endpoint	Descripción
+Método	Endpoint	Descripción:
 POST	/proyectos/	Crear un nuevo proyecto
 GET	/proyectos/	Listar proyectos (filtros: nombre, estado, presupuesto)
 GET	/proyectos/{id}	Obtener información de un proyecto
