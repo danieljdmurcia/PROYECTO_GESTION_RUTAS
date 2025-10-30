@@ -28,21 +28,21 @@ El proyecto **Gestión de Rutas** tiene como objetivo crear una API REST que ges
 
 │
 ├── app/
-│ ├── main.py # Punto de entrada del servidor
-│ ├── database.py # Conexión y sesión con la base de datos
-│ ├── models.py # Modelos SQLModel (Empleado, Proyecto, Relación)
-│ ├── schemas.py # Esquemas Pydantic para validaciones
-│ ├── crud.py # Lógica CRUD y reglas de negocio
-│ ├── routers/
-│ │ ├── empleados.py # Rutas para empleados
-│ │ ├── proyectos.py # Rutas para proyectos
-│ │ └── asignaciones.py # Rutas para relaciones
-│ └── init.py
+│ ├──    main.py # Punto de entrada del servidor
+│ ├──    database.py # Conexión y sesión con la base de datos
+│ ├──    models.py # Modelos SQLModel (Empleado, Proyecto, Relación)
+│ ├──    schemas.py # Esquemas Pydantic para validaciones
+│ ├──    crud.py # Lógica CRUD y reglas de negocio
+│ ├──     routers/
+│ │ ├──     empleados.py # Rutas para empleados
+│ │ ├──     proyectos.py # Rutas para proyectos
+│ │ └──     asignaciones.py # Rutas para relaciones
+│ └──    init.py
 │
-├── requirements.txt # Dependencias del proyecto
-├── .gitignore # Archivos y carpetas a ignorar en Git
-├── README.md # Este archivo
-└── venv/ # (opcional) entorno virtual
+├──    requirements.txt # Dependencias del proyecto
+├──    .gitignore # Archivos y carpetas a ignorar en Git
+├──    README.md # Este archivo
+└──    venv/ # (opcional) entorno virtual
 
 ## Endpoints principales
 - `POST /empleados/` crear empleado
