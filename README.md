@@ -50,7 +50,7 @@ Los proyectos no pueden tener nombres repetidos.
 
 Un empleado no puede estar asignado dos veces al mismo proyecto.
 
-Tecnologías Utilizadas
+Tecnologías Utilizadas:
 
 Python 3.12+
 
