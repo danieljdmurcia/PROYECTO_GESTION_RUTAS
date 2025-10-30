@@ -3,7 +3,7 @@ Sistema de Gestión de Proyectos:
 API REST desarrollada con FastAPI y SQLModel para la gestión integral de empleados, proyectos y asignaciones dentro de una empresa consultora.
 El sistema permite registrar empleados, crear proyectos, asignar roles y mantener un control eficiente de los recursos humanos y técnicos.
 
-Descripción
+Descripción:
 
 Una empresa consultora necesita gestionar sus proyectos y empleados.
 Este sistema fue diseñado para ofrecer una solución ágil que permita:
