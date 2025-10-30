@@ -42,7 +42,7 @@ Filtros personalizados en endpoints (por nombre, estado o especialidad).
 
 Documentación automática con Swagger UI (/docs).
 
-Lógica de Negocio
+Lógica de Negocio:
 
 Un empleado gerente no puede eliminarse si tiene proyectos asignados.
 
