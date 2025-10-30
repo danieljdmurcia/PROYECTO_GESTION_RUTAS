@@ -5,7 +5,7 @@ El sistema permite registrar empleados, crear proyectos, asignar roles y mantene
 
 Descripción:
 
-Una empresa consultora necesita gestionar sus proyectos y empleados
+Una empresa consultora necesita gestionar sus proyectos y empleados.
 Este sistema fue diseñado para ofrecer una solución ágil que permita:
 
 Registrar empleados (nombre, especialidad, salario, estado).
