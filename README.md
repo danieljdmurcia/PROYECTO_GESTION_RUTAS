@@ -160,7 +160,7 @@ Crear Asignación
   "fecha_asignacion": "2025-10-30"
 }
 
-Estado del Proyecto
+Estado del Proyecto:
 
 CRUD completo y funcional
 
