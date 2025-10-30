@@ -113,7 +113,7 @@ PROYECTO_GESTION_RUTAS/
 ├── README.md                  # Documentación
 └── venv/                      # Entorno virtual (opcional)
 
-Mapa de Endpoints
+Mapa de Endpoints:
 Empleados
 Método	Endpoint	Descripción
 POST	/empleados/	Crear un nuevo empleado
