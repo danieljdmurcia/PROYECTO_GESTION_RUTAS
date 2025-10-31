@@ -94,25 +94,6 @@ Swagger UI → http://127.0.0.1:8000/docs
 
 Redoc → http://127.0.0.1:8000/redoc
 
-Estructura del Proyecto:
-PROYECTO_GESTION_RUTAS/
-│
-├── app/
-│   ├── main.py                # Punto de entrada de la aplicación
-│   ├── database.py            # Conexión y creación de tablas
-│   ├── models.py              # Modelos SQLModel (Empleado, Proyecto, Asignación)
-│   ├── schemas.py             # Esquemas Pydantic
-│   ├── crud.py                # Funciones CRUD y reglas de negocio
-│   ├── routers/
-│   │   ├── empleados.py       # Endpoints de empleados
-│   │   ├── proyectos.py       # Endpoints de proyectos
-│   │   └── asignaciones.py    # Endpoints de asignaciones
-│   └── __init__.py
-│
-├── requirements.txt           # Dependencias del proyecto
-├── README.md                  # Documentación
-└── venv/                      # Entorno virtual (opcional)
-
 Mapa de Endpoints:
 Empleados
 Método	Endpoint	Descripción
